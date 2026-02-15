@@ -42,6 +42,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/Logo-GlassTransparent.svg
+    - assets/images/margin-wordmark.svg
 
   fonts:
     - family: Rubik
@@ -49,3 +50,7 @@ flutter:
         - asset: assets/fonts/Rubik-Regular.ttf
         - asset: assets/fonts/Rubik-Bold.ttf
           weight: 700
+
+    - family: SNPro
+      fonts:
+        - asset: assets/fonts/SNPro-VariableFont_wght.ttf

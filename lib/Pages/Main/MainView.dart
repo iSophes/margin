@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   String title = "Home";
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void updateSelectedPage(int index) {
     setState(() {

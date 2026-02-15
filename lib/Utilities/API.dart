@@ -31,6 +31,8 @@ class BaseAPI extends ChangeNotifier {
   String? get email => _currentUser.email;
   String? get userid => _currentUser.$id;
   Client get client => _client;
+  User? get user => _currentUser;
+  Account? get account => _account;
 
   BaseAPI() {
     init();
@@ -75,7 +77,4 @@ class BaseAPI extends ChangeNotifier {
     await account!.updatePrefs(prefs: currentPrefs.data);
   }
 
-
-  User? get user => _currentUser;
-  Account? get account => _account;
 }

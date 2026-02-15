@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:margin/Pages/Accounts/StageOne.dart';
 import 'package:margin/Pages/Main/MainView.dart';
 import 'package:margin/Utilities/API.dart';
 import 'package:margin/Utilities/Logging.dart';
@@ -58,11 +59,18 @@ class _splashPageState extends State<SplashPage> {
     final api = context.read<BaseAPI>();
     await api.init();
     await api.loadUser();
-    // final status = api.status;
+    final status = api.status;
 
     setState(() {
       currentLoadingStageText = "Let's go!";
     });
+
+    debugLog(status.name);
+
+    if (status == AccountStatus.unauthenticated) {
+      return Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const StageOneAccounts()), (r) => false);
+    }
 
     Navigator.of(context).pushAndRemoveUntil(
         PageRouteBuilder(
