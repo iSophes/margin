@@ -1,0 +1,51 @@
+name: margin
+description: "Book review and sharing app."
+publish_to: 'none' # DO NOT REMOVE THIS LINE. IT WILL MESS A LOT OF THINGS UP. 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Packages were grabbed from a friend's project that I deemed useful - will most likely use these
+  # I've commented some that I know i'll use in places
+  
+  appwrite: ^20.3.2 # User auth
+  mobile_scanner: ^7.1.4 # Book barcode scanning
+  google_fonts: ^6.3.2 # More fonts if needed
+  provider: ^6.1.5+1 # Idk what this is, but it looks like an optimisation for something
+  shared_preferences: ^2.5.4 # Allows us to save client-side configs (User app themes!)
+  intl: ^0.20.2 # Localisation
+  image_picker: ^1.2.0 # For profile pictures
+  cached_network_image: ^3.4.1 # For others profile pictures
+  http: ^1.6.0 # HTTP requests, allows communication between front and backend
+  dropdown_button2: ^2.3.9 # Dropdowns
+  onesignal_flutter: ^5.3.0 # Push notifications, may use for friend requests and possible book recommendations
+  crop_your_image: ^2.0.0 # PFPs
+  pub_semver: ^2.1.5 # Maybe use to show app versions at bottom of settings page? Might delete.
+  skeletonizer: ^2.0.1 # Gives us app skeletons
+  gaimon: ^1.4.2 # Haptics
+  flutter_svg: ^2.0.10  # why doesnt flutter natively support svgssssss REEEEEEEEEEEEEEEEEEEEE
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/Logo-GlassTransparent.svg
+
+  fonts:
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/Rubik-Regular.ttf
+        - asset: assets/fonts/Rubik-Bold.ttf
+          weight: 700
