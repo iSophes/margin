@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:margin/Pages/Splash/Splash.dart';
+import 'package:margin/Pages/Terms/terms.dart';
 import 'package:margin/Utilities/API.dart';
 import 'package:margin/Utilities/Logging.dart';
 import 'package:margin/Utilities/Themes/DarkMode.dart';
@@ -102,6 +103,7 @@ class BaseApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
           '/splash': (BuildContext context) => const SplashPage(),
+          '/terms': (BuildContext context) => const TermsOfUsePage(),
           // We can only add routes here that don't need data passing to them
         },
         navigatorKey: globalKey,

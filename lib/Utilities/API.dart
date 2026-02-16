@@ -39,14 +39,16 @@ class BaseAPI extends ChangeNotifier {
     loadUser();
   }
 
-  init() {
+  Future<void> init() {
     _client
         .setEndpoint(MarginConfig.endpoint)
         .setProject(MarginConfig.projectId);
     _account = Account(_client);
+
+    return Future.value();
   }
 
-  Future<Null> loadUser() async {
+  Future<void> loadUser() async {
     try {
       final User user = await _account.get();
       _currentUser = user;

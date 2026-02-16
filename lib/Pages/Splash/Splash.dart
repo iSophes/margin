@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:margin/Pages/Accounts/StageOne.dart';
+import 'package:margin/Pages/Accounts/stageOne.dart';
 import 'package:margin/Pages/Main/MainView.dart';
 import 'package:margin/Utilities/API.dart';
 import 'package:margin/Utilities/Logging.dart';
@@ -46,10 +46,14 @@ class _splashPageState extends State<SplashPage> {
     return false;
   }
 
-  _navigateToHome() async {
+  Future<dynamic> _navigateToHome() async {
     if (!await hasNetwork("google.com")) {
       debugLog("No internet!!"); 
       // show a debug page
+    }
+
+    if (!mounted) {
+      return;
     }
 
     // add server issue page check here
@@ -64,6 +68,10 @@ class _splashPageState extends State<SplashPage> {
     setState(() {
       currentLoadingStageText = "Let's go!";
     });
+
+    if (!mounted) {
+      return;
+    }
 
     debugLog(status.name);
 

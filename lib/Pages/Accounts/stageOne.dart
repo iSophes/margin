@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:margin/Pages/Accounts/CreateAccount/stageOne.dart';
 import 'package:margin/Utilities/Themes/ThemeProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -12,11 +12,12 @@ class StageOneAccounts extends StatefulWidget {
 }
 
 class _AccountsStageOneState extends State<StageOneAccounts> {
-  void TransferToSignUp() {
-    return;
+  Future<Null> transferToSignUp() {
+    return Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const CreateAccountPageOne()), (r) => false);
   }
 
-  void TransferToLogIn() {
+  void transferToLogIn(){
 
   }
 
@@ -32,7 +33,7 @@ class _AccountsStageOneState extends State<StageOneAccounts> {
           Center(child: SvgPicture.asset("assets/images/margin-wordmark.svg", width: 210, height: 100),),
           Spacer(),
           ElevatedButton(
-            onPressed: TransferToLogIn, 
+            onPressed: transferToLogIn, 
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.deepPurple, 
               foregroundColor: Colors.white, 
@@ -43,7 +44,7 @@ class _AccountsStageOneState extends State<StageOneAccounts> {
             ), 
             child: Text('Log In')),
           SizedBox(height: 10,),
-          ElevatedButton(onPressed: TransferToSignUp, 
+          ElevatedButton(onPressed: transferToSignUp, 
             style: ElevatedButton.styleFrom(
               backgroundColor: context.read<ThemeProvider>().isLightMode ? Colors.white : Colors.black, 
               foregroundColor: context.read<ThemeProvider>().isLightMode ? Colors.deepPurple : Colors.deepPurple.shade300, 
