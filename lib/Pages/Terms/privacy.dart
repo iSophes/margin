@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TermsOfUsePage extends StatelessWidget {
-  const TermsOfUsePage({super.key});
+class PrivacyPage extends StatelessWidget {
+  const PrivacyPage({super.key});
 
   void _copyToClipboard(BuildContext context, String text) {
     Clipboard.setData(ClipboardData(text: text));
@@ -15,7 +15,7 @@ class TermsOfUsePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Terms of Use'),
+        title: const Text('Privacy Policy'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -29,7 +29,7 @@ class TermsOfUsePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  "Margin's Terms of Use",
+                  "Margin's Privacy Policy",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
@@ -44,17 +44,21 @@ class TermsOfUsePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  'Welcome to Margin. By using this app, you agree to comply with and be bound by these Terms of Use. If you do not agree with these terms, please do not use the app.',
+                  'Welcome to Margin. Margin is an app which allows users to review and share their favourite books with others. Your privacy is of highest importance to us. This privacy policy will contain what data we collect about our users and how we store it securely.',
                   style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Eligibility',
+                  'Data We Collect',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  "USERS UNDER THE AGE OF 13 MAY NOT USE MARGIN'S SERVICES AT ANY TIME OR IN ANY MATTER.",
+                  "Margin collects a range of data to provide it's core functions. We collect the following data about you: \n"
+                  "- Email Address: Collected for account creation and communication purposes\n"
+                  "- Name: Collected to personalise your experience and identify you to other users in our account."
+                  "- Password Hash: For account data storage"
+                  ,
                   style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 5,),
@@ -65,80 +69,53 @@ class TermsOfUsePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'User-Generated Content',
+                  'Legal Basis for Processing',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  'Users may provide full names, profile pictures and birthdays as part of their account information. By submitting this content, you represent and warrant that:\n'
-                  '1. You own or have the necessary permissions to use and share this content.\n'
-                  '2. The content is accurate and does not violate any laws or third-party rights.',
+                  'Our processing of your personal data is based on:\n'
+                  '• Your Consent: By creating an account or installing the app, you consent to the collection and use of your data as outlined in this policy. You can opt out of analytics tracking at any time in settings.\n'
+                  '• Legitimate Interests: We have a legitimate interest in processing your data to operate and maintain the app effectively.',
                   style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Reporting Content',
+                  'Your Rights',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
-                Wrap(
-                  children: [
-                    const Text(
-                      'If you encounter content that violates these Terms of Use, you may report it by emailing us at: ',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    InkWell(
-                      child: const Text(
-                        'contact@isophes.com',
-                        style: TextStyle(fontSize: 16, color: Colors.deepPurple),
-                      ),
-                      onTap: () {
-                        _copyToClipboard(context, 'contact@isophes.com');
-                      },
-                    ),
-                  ],
+                const Text(
+                  'You have the right to access, correct, or delete your data at any time. Please contact us at ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                InkWell(
+                  child: const Text(
+                    'contact@isophes.com',
+                    style: TextStyle(fontSize: 16, color: Colors.deepPurple),
+                  ),
+                  onTap: () {
+                    _copyToClipboard(context, 'contact@isophes.com');
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Acceptable Use',
+                  'Data Retention',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  'You agree not to:\n'
-                  '• Use the app for any unlawful or prohibited activities.\n'
-                  '• Upload or share any content that is abusive, defamatory, obscene, or otherwise objectionable.\n'
-                  '• Attempt to gain unauthorized access to the app or its systems.',
+                  'We retain your personal data for as long as your account remains active or as necessary to provide our services. If you choose to deactivate your account, we will delete your data in accordance with applicable legal requirements.',
                   style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Account Responsibilities',
+                  'Changes to This Policy',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  'You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.',
-                  style: TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Termination',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 5),
-                const Text(
-                  'We reserve the right to suspend or terminate your access to the app at any time, without prior notice, for any violation of these Terms of Use or for other reasons deemed necessary.',
-                  style: TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Changes to These Terms',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 5),
-                const Text(
-                  'We may update these Terms of Use from time to time. Any significant changes will be communicated to you through the app or via email. Continued use of the app after changes are made constitutes acceptance of the updated terms.',
+                  'We may revise this Privacy Policy from time to time. Any significant changes will be communicated to you through the app or via the email address associated with your account. Your continued use of the app following these changes indicates your acceptance of the updated policy.',
                   style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 20),
@@ -147,22 +124,18 @@ class TermsOfUsePage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
-                Wrap(
-                  children: [
-                    const Text(
-                      'If you have any questions about these Terms of Use, please contact us at ',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    InkWell(
-                      child: const Text(
-                        'contact@isophes.com',
-                        style: TextStyle(fontSize: 16, color: Colors.deepPurple),
-                      ),
-                      onTap: () {
-                        _copyToClipboard(context, 'contact@isophes.com');
-                      },
-                    ),
-                  ],
+                const Text(
+                  'If you have any questions, concerns, or requests related to this Privacy Policy or your personal data, please contact us at ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                InkWell(
+                  child: const Text(
+                    'contact@isophes.com',
+                    style: TextStyle(fontSize: 16, color: Colors.deepPurple),
+                  ),
+                  onTap: () {
+                    _copyToClipboard(context, 'contact@isophes.com');
+                  },
                 ),
               ],
             ),

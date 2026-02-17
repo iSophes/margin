@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:margin/Pages/Splash/Splash.dart';
+import 'package:margin/Pages/Accounts/CreateAccount/underaged.dart';
+import 'package:margin/Pages/Splash/splash.dart';
+import 'package:margin/Pages/Terms/privacy.dart';
 import 'package:margin/Pages/Terms/terms.dart';
-import 'package:margin/Utilities/API.dart';
-import 'package:margin/Utilities/Logging.dart';
-import 'package:margin/Utilities/Themes/DarkMode.dart';
-import 'package:margin/Utilities/Themes/LightMode.dart';
-import 'package:margin/Utilities/Themes/ThemeProvider.dart';
+import 'package:margin/Utilities/api.dart';
+import 'package:margin/Utilities/logging.dart';
+import 'package:margin/Utilities/Themes/dark_mode.dart';
+import 'package:margin/Utilities/Themes/light_mode.dart';
+import 'package:margin/Utilities/Themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -104,6 +106,8 @@ class BaseApp extends StatelessWidget {
         routes: <String, WidgetBuilder>{
           '/splash': (BuildContext context) => const SplashPage(),
           '/terms': (BuildContext context) => const TermsOfUsePage(),
+          '/underaged': (BuildContext context) => const UnderagedUserPage(),
+          '/privacy': (BuildContext context) => const PrivacyPage(),
           // We can only add routes here that don't need data passing to them
         },
         navigatorKey: globalKey,

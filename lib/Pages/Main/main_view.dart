@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:margin/Utilities/Themes/ThemeProvider.dart';
+import 'package:margin/Utilities/Themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {

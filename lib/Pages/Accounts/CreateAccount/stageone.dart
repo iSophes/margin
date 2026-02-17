@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:margin/Pages/Accounts/CreateAccount/stageTwo.dart';
-import 'package:margin/Utilities/Themes/ThemeProvider.dart';
+import 'package:margin/Pages/Accounts/CreateAccount/stagetwo.dart';
+import 'package:margin/Utilities/logging.dart';
+import 'package:margin/Utilities/Themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class CreateAccountPageOne extends StatefulWidget {
@@ -14,9 +15,31 @@ class CreateAccountPageOne extends StatefulWidget {
 class _CreateAccountStageOneState extends State<CreateAccountPageOne> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  DateTime _selectedDOB = DateTime.now(); 
 
+  bool hasSelectedDOB = true;
   bool validEmail = true;
   bool validPassword = true;
+
+  Future<void> selectDOB() async {
+    final newDate = await showDatePicker(context: context, firstDate: DateTime(2000), lastDate: DateTime.now(), initialDate: DateTime.now());
+
+    if (newDate == null) {
+      setState(() {
+        hasSelectedDOB = false;
+      });
+
+      return;
+    }
+
+    if (newDate != _selectedDOB) {
+      hasSelectedDOB = false;
+
+      setState(() {
+        _selectedDOB = newDate;
+      });
+    }
+  }
 
   Future<dynamic> transferToNextStage() {
     // regex check
@@ -26,9 +49,14 @@ class _CreateAccountStageOneState extends State<CreateAccountPageOne> {
       validPassword = true;
     });
 
+    debugLog(DateTime.now().difference(_selectedDOB).inDays.toString());
+
+    if (DateTime.now().difference(_selectedDOB).inDays < 4745) {
+      return Navigator.of(context).pushNamed('/underaged'); 
+    }
+
     RegExp emailExpression = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     
-
     if (!emailExpression.hasMatch(_emailController.text)) {
       // we fail
       setState(() {
@@ -36,7 +64,7 @@ class _CreateAccountStageOneState extends State<CreateAccountPageOne> {
       });
       return Future.value();
     }
-    if (_passwordController.text.length < 7) {
+    if (_passwordController.text.length < 8) {
       // we fail
       setState(() {validPassword = false;});
       return Future.value();
@@ -136,6 +164,27 @@ class _CreateAccountStageOneState extends State<CreateAccountPageOne> {
                 ),
               ),
             ), 
+          )),
+          SizedBox(height: 20,),
+          Center(child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Birthday: ${_selectedDOB.day}/${_selectedDOB.month}/${_selectedDOB.year}"),
+              SizedBox(width: 30,),
+              ElevatedButton.icon(
+              onPressed: selectDOB, 
+              icon: const Icon(CupertinoIcons.calendar),
+              label: const Text("Select"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple, 
+                foregroundColor: Colors.white, 
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                shadowColor: Color(0xFFAAAAAA),
+                side: BorderSide(color: Colors.deepPurple.shade900),
+                minimumSize: Size(100, 50),  
+                
+              )),           
+            ],
           )),
           SizedBox(height: 20,),
           ElevatedButton(

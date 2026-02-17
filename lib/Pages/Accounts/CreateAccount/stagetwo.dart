@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:margin/Utilities/Themes/ThemeProvider.dart';
+import 'package:margin/Utilities/Themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class CreateAccountPageTwo extends StatefulWidget {
@@ -14,9 +14,13 @@ class CreateAccountPageTwo extends StatefulWidget {
 }
 
 class _CreateAccountStageTwoState extends State<CreateAccountPageTwo> {
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   bool hasAgreedToConditions = false;
   bool hasAgreedToPrivacyPolicy = false;
+
+  Future<void> createAccount() async {
+
+  }
 
   @override 
   Widget build(BuildContext context) {
@@ -25,12 +29,12 @@ class _CreateAccountStageTwoState extends State<CreateAccountPageTwo> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Spacer(),
-          Center(child: Text("What's your name?", style: TextStyle(fontFamily: "Rubik", fontWeight: FontWeight(700), fontSize: 30, color: context.read<ThemeProvider>().isLightMode ? Color(0xFF555555) : Colors.white))),
+          Center(child: Text("Please create yourself a username", textAlign: TextAlign.center, style: TextStyle(fontFamily: "Rubik", fontWeight: FontWeight(700), fontSize: 30, color: context.read<ThemeProvider>().isLightMode ? Color(0xFF555555) : Colors.white))),
           SizedBox(height: 20,),
           SizedBox(width: 300, child: TextField(
-            controller: _passwordController,
+            controller: _usernameController,
             decoration: InputDecoration(
-              hintText: "Name", 
+              hintText: "Username", 
               prefixIcon: Icon(CupertinoIcons.person),
               prefixIconColor: WidgetStateColor.fromMap(
                 <WidgetStatesConstraint, Color>{
@@ -101,9 +105,9 @@ class _CreateAccountStageTwoState extends State<CreateAccountPageTwo> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Checkbox(value: hasAgreedToConditions, onChanged: (bool? value) {
+              Checkbox(value: hasAgreedToPrivacyPolicy, onChanged: (bool? value) {
                 setState(() {
-                  if (value != null) {hasAgreedToConditions = !hasAgreedToConditions;}
+                  if (value != null) {hasAgreedToPrivacyPolicy = !hasAgreedToPrivacyPolicy;}
                 });
               }),
               RichText(text: TextSpan(
@@ -123,7 +127,7 @@ class _CreateAccountStageTwoState extends State<CreateAccountPageTwo> {
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         Navigator.of(context).pushNamed(
-                          "/terms",
+                          "/privacy",
                         );
                       },
                   )
@@ -131,6 +135,19 @@ class _CreateAccountStageTwoState extends State<CreateAccountPageTwo> {
               )),
             ],
           ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: createAccount, 
+            style: ElevatedButton.styleFrom(
+              backgroundColor: hasAgreedToConditions && hasAgreedToPrivacyPolicy ? Colors.deepPurple : Colors.grey, 
+              foregroundColor: Colors.white, 
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              shadowColor: Color(0xFFAAAAAA),
+              side: BorderSide(color: hasAgreedToConditions && hasAgreedToPrivacyPolicy ? Colors.deepPurple.shade900 : Colors.grey.shade700),
+              minimumSize: Size(250, 50),  
+            ), 
+            child: Text('Create Account')),
+          
           Spacer()
         ]
       ),

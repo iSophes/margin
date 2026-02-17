@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:margin/Pages/Accounts/stageOne.dart';
-import 'package:margin/Pages/Main/MainView.dart';
-import 'package:margin/Utilities/API.dart';
-import 'package:margin/Utilities/Logging.dart';
-import 'package:margin/Utilities/Themes/ThemeProvider.dart';
+import 'package:margin/Pages/Accounts/stageone.dart';
+import 'package:margin/Pages/Main/main_view.dart';
+import 'package:margin/Utilities/api.dart';
+import 'package:margin/Utilities/logging.dart';
+import 'package:margin/Utilities/Themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
@@ -15,10 +15,10 @@ class SplashPage extends StatefulWidget {
   const SplashPage({super.key, this.nextRoute});
 
   @override 
-  State<SplashPage> createState() => _splashPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _splashPageState extends State<SplashPage> {
+class _SplashPageState extends State<SplashPage> {
   String currentLoadingStageText = "";
 
   @override

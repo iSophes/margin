@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:appwrite/models.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'package:appwrite/appwrite.dart';
-import 'package:margin/Utilities/Config.dart';
+import 'package:margin/Utilities/config.dart';
 
 enum AccountStatus {
   uninitialized,
